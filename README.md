@@ -1,1 +1,64 @@
-📚 Proyecto: Gestión de Empleados (TCSW-Practica02)Este proyecto es una aplicación de escritorio desarrollada en Java utilizando la librería Swing para la interfaz gráfica y PostgreSQL como sistema de gestión de bases de datos (SGBD). Implementa un patrón de diseño DAO (Data Access Object) con genéricos y un patrón Singleton para la conexión a la base de datos, asegurando operaciones CRUD (Crear, Leer, Actualizar, Eliminar) seguras.⚙️ Tecnologías UtilizadasLenguaje: JavaInterfaz Gráfica: Java Swing (implementado con NetBeans GUI Builder)Base de Datos: PostgreSQLDriver: JDBC (Java Database Connectivity)Patrones de Diseño: DAO Genérico (IDAOGeneral), Singleton (ConexionDB), Command/Strategy (TransactionDB, IMensaje).🏗️ Estructura del ProyectoEl proyecto sigue una arquitectura organizada en capas:Clase/InterfazTipoPropósito PrincipalPrincipal.javaJFrameVentana principal que contiene el JDesktopPane para alojar ventanas internas (MDI).EmpleadoGUI.javaJInternalFrameInterfaz de usuario para realizar las operaciones CRUD sobre la entidad Empleado.PojoEmpleado.javaPOJO / DTOObjeto que representa la entidad "Empleado" con sus atributos (clave, nombre, direccion, telefono).IDAOGeneral<T, ID>InterfazDefine el contrato para las operaciones CRUD genéricas.DAOEmpleado.javaClaseImplementación concreta del DAO para PojoEmpleado. Usa PreparedStatement para operaciones DML seguras (Guardar, Eliminar, Modificar).ConexionDB.javaSingletonManeja una única instancia de la conexión a PostgreSQL. Incluye la lógica para crear la DB/tabla (empleados2) si no existen.TransactionDB<T, ID>AbstractaPatrón Command que encapsula operaciones que requieren una conexión activa (Connection), facilitando el uso de PreparedStatement.IMensaje, SaludoI, DespedidaI, ControllerMensajePatronesImplementación de un patrón Strategy para manejar diferentes tipos de mensajes de logging (ejemplo didáctico de POO).🚀 Requisitos y ConfiguraciónPara correr este proyecto localmente, necesitas:JDK (Java Development Kit): Versión 8 o superior.PostgreSQL Server: Instalado y corriendo (generalmente en localhost:5432).Librería JDBC: Necesitas el driver JDBC de PostgreSQL. Asegúrate de que el archivo .jar esté incluido en la carpeta Libraries de tu proyecto.🔌 Configuración de Base de DatosEl proyecto está configurado para conectarse a la base de datos con los siguientes parámetros por defecto (definidos en ConexionDB.java):ParámetroValor por defectoURLjdbc:postgresql://localhost:5432/ejemploUsuariopostgresContraseñapastelTablaempleados2Importante: Si tus credenciales de PostgreSQL son diferentes, debes modificar los campos usr y pwd en la clase ConexionDB.java antes de compilar y ejecutar por primera vez.⌨️ Uso de la AplicaciónEjecutar el proyecto: Abre la clase Principal.java (o ejecuta el JAR compilado).Menú Principal: Navega en la barra de menú a OPCIONES y selecciona EMPLEADO.Gestión CRUD: Se abrirá la ventana interna EmpleadoGUI donde puedes:Ingresar Clave, Nombre, Dirección y Teléfono.Usar Guardar, Modificar o Eliminar para las operaciones de persistencia.Usar el botón Listar todos para mostrar/ocultar la tabla con los registros actuales de la base de datos.
+# 📚 Gestión de Empleados (TCSW-Practica02)
+
+Proyecto de aplicación de escritorio en **Java** que implementa una solución de **Gestión de Empleados (CRUD)**. Utiliza la librería **Swing** para la interfaz gráfica y **PostgreSQL** para la persistencia de datos.
+
+## ✨ Características Técnicas
+
+| Tecnología | Rol en el Proyecto |
+| :--- | :--- |
+| **Java** | Lenguaje de programación. |
+| **Swing** | Desarrollo de la Interfaz Gráfica de Usuario (GUI). |
+| **PostgreSQL** | Sistema de Gestión de Bases de Datos (SGBD). |
+| **JDBC** | Driver de conectividad a la base de datos. |
+
+---
+
+## 🏗️ Arquitectura y Patrones
+
+El diseño del proyecto se basa en patrones de POO para asegurar la modularidad y la seguridad:
+
+* **DAO (Data Access Object) Genérico:** Define el contrato CRUD (`IDAOGeneral`).
+* **Singleton:** Gestiona una única instancia de la conexión a la base de datos (`ConexionDB`).
+* **Command/Strategy:** Implementado en `TransactionDB` para encapsular operaciones SQL y garantizar el uso de **Prepared Statements** (seguridad contra inyección SQL).
+* **POJO / DTO:** La clase `PojoEmpleado` actúa como objeto de transferencia de datos.
+
+### Componentes Clave
+
+| Clase/Interfaz | Tipo | Función |
+| :--- | :--- | :--- |
+| `Principal.java` | JFrame | Contenedor principal de la aplicación (MDI). |
+| `EmpleadoGUI.java` | JInternalFrame | Interfaz de formulario para operaciones CRUD. |
+| `DAOEmpleado.java` | Clase | Lógica de persistencia (Guardar, Modificar, Eliminar) de Empleados. |
+| `ConexionDB.java` | Singleton | Gestiona la conexión y asegura la existencia de la DB y la tabla. |
+
+---
+
+## 🚀 Instalación y Ejecución
+
+### Requisitos
+
+* **JDK** (Java Development Kit) 8+ (Configurado en el `pom.xml`).
+* **PostgreSQL Server** (Activo en puerto 5432).
+* **Driver JDBC** de PostgreSQL (como dependencia en Maven).
+
+### Configuración de Conexión
+
+La configuración de la base de datos se encuentra en `ConexionDB.java`.
+
+| Parámetro | Valor por defecto |
+| :--- | :--- |
+| **URL** | `jdbc:postgresql://localhost:5432/ejemplo` |
+| **Usuario** | `postgres` |
+| **Contraseña** | `pastel` |
+
+### Uso
+
+1.  Ejecuta la aplicación (clase `Principal.java`).
+2.  Accede al menú **OPCIONES** ➡️ **EMPLEADO** para abrir la interfaz de gestión.
+3.  Utiliza los botones **Guardar**, **Modificar**, **Eliminar** y **Listar todos** para interactuar con la base de datos.
+
+---
+
+## 🤝 Contribución
+
+¡Cualquier sugerencia o pull request para mejorar el código es bienvenida!
