@@ -14,7 +14,7 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author sinoe
+ * @author zallix
  */
 public class ConexionDB {
 
@@ -30,7 +30,7 @@ public class ConexionDB {
     private String dbName = "ejemplo";
     private String url = "jdbc:postgresql://localhost:5432/" + dbName;
     private String usr = "postgres";
-    private String pwd = "710563";
+    private String pwd = "pastel";
 
     private Connection con = null;
 
@@ -58,7 +58,7 @@ public class ConexionDB {
     }
 
     private void createDatabase() {
-        String urlDefault = "jdbc:postgresql://localhost:5432/postgres"; // conecta a la BD por defecto
+        String urlDefault = "jdbc:postgresql://localhost:5432/postgres"; 
         try (Connection tmp = DriverManager.getConnection(urlDefault, usr, pwd); Statement st = tmp.createStatement()) {
             st.executeUpdate("CREATE DATABASE " + dbName);
             Logger.getLogger(ConexionDB.class.getName()).log(Level.INFO, "BASE DE DATOS {0} CREADA", dbName);

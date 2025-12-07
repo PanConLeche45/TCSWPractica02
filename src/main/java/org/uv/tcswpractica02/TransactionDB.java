@@ -8,7 +8,7 @@ import java.sql.Connection;
 
 /**
  *
- * @author sinoe
+ * @author zallix
  */
 public abstract class TransactionDB  <T, ID>{
     protected T pojoDB;

@@ -6,7 +6,7 @@ package org.uv.tcswpractica02;
 
 /**
  *
- * @author sinoe
+ * @author zallix
  */
 public class Principal extends javax.swing.JFrame {
 
@@ -75,6 +75,7 @@ public class Principal extends javax.swing.JFrame {
 
         jMenu2.setText("OPCIONES");
 
+        MenuEmpleado.setBackground(new java.awt.Color(255, 51, 255));
         MenuEmpleado.setText("EMPLEADO");
         MenuEmpleado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

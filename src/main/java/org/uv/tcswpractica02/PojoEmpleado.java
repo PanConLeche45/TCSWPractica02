@@ -6,7 +6,7 @@ package org.uv.tcswpractica02;
 
 /**
  *
- * @author sinoe
+ * @author zallix
  */
 public class PojoEmpleado {
 

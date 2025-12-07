@@ -7,7 +7,7 @@ package org.uv.tcswpractica02;
 
 /**
  *
- * @author sinoe
+ * @author zallix
  */
 public class ControllerMensaje {
     public void mostrar (IMensaje msg) {

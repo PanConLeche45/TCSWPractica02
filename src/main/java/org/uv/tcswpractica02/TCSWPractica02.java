@@ -11,7 +11,7 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author sinoe
+ * @author zallix
  */
 public class TCSWPractica02 {
     DAOEmpleado dao = new DAOEmpleado();
